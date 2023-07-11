@@ -4,8 +4,13 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+
 import TabsNavigator from "./src/Navigator/TabsNavigator";
+import ProductDetails from "./src/screen/Stack/ProductDetails";
+
 SplashScreen.hideAsync();
+
 const Stack = createNativeStackNavigator();
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,13 +24,15 @@ export default function App() {
   if (!fontsLoaded) return null;
   return (
     <NavigationContainer>
+      <StatusBar backgroundColor="white" />
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          // animation:
+          animation: "slide_from_right",
         }}
       >
         <Stack.Screen name="tabs" component={TabsNavigator} />
+        <Stack.Screen name="product" component={ProductDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );
