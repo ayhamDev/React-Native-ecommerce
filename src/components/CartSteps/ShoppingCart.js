@@ -6,6 +6,7 @@ import { ScrollView } from "react-native-actions-sheet";
 import colors from "../../utils/colors";
 import { TextInput } from "react-native";
 import ButtonBlue from "../ButtonBlue";
+import * as Animatable from "react-native-animatable";
 
 const ShoppingCart = (props) => {
   const [PromoCode, setPromoCode] = useState("");
@@ -45,186 +46,190 @@ const ShoppingCart = (props) => {
     },
   ];
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "space-between",
-        paddingHorizontal: 32,
-        paddingVertical: 16,
-      }}
-    >
-      <ScrollView
-        {...props.scrollHandlers}
-        showsVerticalScrollIndicator={false}
+    <Animatable.View animation={"bounceIn"} duration={600} style={{ flex: 1 }}>
+      <View
         style={{
           flex: 1,
+          justifyContent: "space-between",
+          paddingHorizontal: 32,
+          paddingVertical: 16,
         }}
       >
-        <CartProductList products={ProductsList} />
-      </ScrollView>
-
-      <View>
-        <View
+        <ScrollView
+          {...props.scrollHandlers}
+          showsVerticalScrollIndicator={false}
           style={{
-            width: "100%",
-            height: 1,
-            backgroundColor: colors.white,
-            marginVertical: 16,
-            gap: 16,
-          }}
-        />
-        <View
-          style={{
-            gap: 4,
-            backgroundColor: colors.white,
-            borderRadius: 15,
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: 6,
+            flex: 1,
           }}
         >
-          <TextInput
-            placeholder="Search"
-            onChangeText={(text) => setPromoCode(text)}
+          <CartProductList products={ProductsList} />
+        </ScrollView>
+
+        <View>
+          <View
             style={{
-              flex: 1,
-              paddingLeft: 4,
-              fontFamily: "quicksand m",
-              color: colors.primary,
+              width: "100%",
+              height: 1,
+              backgroundColor: colors.white,
+              marginVertical: 16,
+              gap: 16,
             }}
           />
-          <ButtonBlue disabled={Number(PromoCode.length) == 0}>
-            Apply
-          </ButtonBlue>
-        </View>
-        <View
-          style={{
-            width: "100%",
-            height: 1,
-            backgroundColor: colors.white,
-            marginVertical: 16,
-            gap: 16,
-          }}
-        />
-        <View
-          style={{
-            paddingVertical: 16,
-          }}
-        >
-          <View>
-            <View
+          <View
+            style={{
+              gap: 4,
+              backgroundColor: colors.white,
+              borderRadius: 15,
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: 6,
+            }}
+          >
+            <TextInput
+              placeholder="Promo Code"
+              onChangeText={(text) => setPromoCode(text)}
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
+                flex: 1,
+                paddingLeft: 4,
+                fontFamily: "quicksand m",
+                color: colors.primary,
               }}
-            >
-              <Text
-                style={{
-                  fontFamily: "quicksand",
-                  fontSize: 14,
-                  color: colors.primary,
-                }}
-              >
-                Sub Total
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "quicksand b",
-                  fontSize: 20,
-                  color: colors.primary,
-                }}
-              >
-                $84.00
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: "quicksand",
-                  fontSize: 14,
-                  color: colors.primary,
-                }}
-              >
-                Shipping
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "quicksand b",
-                  fontSize: 20,
-                  color: colors.primary,
-                }}
-              >
-                $6.00
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: "quicksand",
-                  fontSize: 14,
-                  color: colors.primary,
-                }}
-              >
-                Tax (10%)
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "quicksand b",
-                  fontSize: 20,
-                  color: colors.primary,
-                }}
-              >
-                $9.00
-              </Text>
-            </View>
+            />
+            <ButtonBlue disabled={Number(PromoCode.length) == 0}>
+              Apply
+            </ButtonBlue>
           </View>
           <View
             style={{
-              paddingTop: 25,
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
+              width: "100%",
+              height: 1,
+              backgroundColor: colors.white,
+              marginVertical: 16,
+              gap: 16,
+            }}
+          />
+          <View
+            style={{
+              paddingTop: 16,
             }}
           >
-            <Text
+            <View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "quicksand",
+                    fontSize: 14,
+                    color: colors.primary,
+                  }}
+                >
+                  Sub Total
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "quicksand b",
+                    fontSize: 20,
+                    color: colors.primary,
+                  }}
+                >
+                  $84.00
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "quicksand",
+                    fontSize: 14,
+                    color: colors.primary,
+                  }}
+                >
+                  Shipping
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "quicksand b",
+                    fontSize: 20,
+                    color: colors.primary,
+                  }}
+                >
+                  $6.00
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "quicksand",
+                    fontSize: 14,
+                    color: colors.primary,
+                  }}
+                >
+                  Tax (10%)
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "quicksand b",
+                    fontSize: 20,
+                    color: colors.primary,
+                  }}
+                >
+                  $9.00
+                </Text>
+              </View>
+            </View>
+            <View
               style={{
-                fontFamily: "quicksand",
-                fontSize: 14,
-                color: colors.primary,
+                paddingTop: 25,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
             >
-              Total
-            </Text>
-            <Text
-              style={{
-                fontFamily: "quicksand b",
-                fontSize: 30,
-                color: colors.secondary,
-              }}
-            >
-              $90.00
-            </Text>
+              <Text
+                style={{
+                  fontFamily: "quicksand",
+                  fontSize: 14,
+                  color: colors.primary,
+                }}
+              >
+                Total
+              </Text>
+              <Text
+                style={{
+                  fontFamily: "quicksand b",
+                  fontSize: 30,
+                  color: colors.secondary,
+                }}
+              >
+                $90.00
+              </Text>
+            </View>
+          </View>
+          <View style={{ paddingTop: 32 }}>
+            <Button onPress={() => props.SetSelectedStep(1)}>
+              Proceed to Checkout
+            </Button>
           </View>
         </View>
-        <Button onPress={() => props.SetSelectedStep(1)}>
-          Proceed to Checkout
-        </Button>
       </View>
-    </View>
+    </Animatable.View>
   );
 };
 

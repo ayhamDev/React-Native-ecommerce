@@ -1,5 +1,3 @@
-import { useCallback, useEffect } from "react";
-import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -9,8 +7,9 @@ import { StatusBar } from "expo-status-bar";
 import TabsNavigator from "./src/Navigator/TabsNavigator";
 import ProductDetails from "./src/screen/Stack/ProductDetails";
 
-import { SheetProvider, SheetManager } from "react-native-actions-sheet";
+import { SheetProvider } from "react-native-actions-sheet";
 import "./src/screen/Stack/Cart.js";
+import Onboarding from "./src/screen/Stack/Onboarding";
 
 SplashScreen.hideAsync();
 
@@ -25,9 +24,6 @@ export default function App() {
     SplashScreen.hideAsync();
   }
   if (!fontsLoaded) return null;
-  setTimeout(() => {
-    SheetManager.show("cart");
-  });
   return (
     <SheetProvider>
       <NavigationContainer>
@@ -38,6 +34,7 @@ export default function App() {
             animation: "slide_from_right",
           }}
         >
+          <Stack.Screen name="onboarding" component={Onboarding} />
           <Stack.Screen name="tabs" component={TabsNavigator} />
           <Stack.Screen name="product" component={ProductDetails} />
         </Stack.Navigator>

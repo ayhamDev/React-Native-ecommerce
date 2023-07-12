@@ -9,11 +9,12 @@ import { registerSheet } from "react-native-actions-sheet";
 import ShoppingCart from "../../components/CartSteps/ShoppingCart";
 import CheckoutOrder from "../../components/CartSteps/CheckoutOrder";
 import OrderSuccess from "../../components/CartSteps/OrderSuccess";
+import * as Animatable from "react-native-animatable";
+import colors from "../../utils/colors";
 
 registerSheet("cart", (props) => {
   const actionSheetRef = useRef(null);
   const stepTitle = ["Shopping Cart", "Checkout Order", "Order Success"];
-  const [Step] = useState([ShoppingCart, CheckoutOrder, OrderSuccess]);
   const [SelectedStep, SetSelectedStep] = useState(0);
 
   const scrollHandlers = useScrollHandlers("scrollview-1", actionSheetRef);
@@ -54,15 +55,18 @@ registerSheet("cart", (props) => {
       gestureEnabled={true}
       defaultOverlayOpacity={0.3}
     >
-      <Text
+      <Animatable.Text
+        animation={"fadeIn"}
+        duration={1000}
         style={{
+          color: colors.secondary,
           fontFamily: "quicksand b",
           fontSize: 24,
           textAlign: "center",
         }}
       >
         {stepTitle[SelectedStep]}
-      </Text>
+      </Animatable.Text>
       <ConditionalComponent />
     </ActionSheet>
   );

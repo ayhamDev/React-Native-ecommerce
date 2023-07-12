@@ -10,7 +10,7 @@ import { AntDesign } from "@expo/vector-icons";
 import colors from "../utils/colors";
 import { SheetManager } from "react-native-actions-sheet";
 
-const Appbar = ({ navigation, StackNavigation }) => {
+const Appbar = ({ navigation }) => {
   return (
     <View
       style={{

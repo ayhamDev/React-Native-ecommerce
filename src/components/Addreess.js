@@ -29,12 +29,11 @@ const Addreess = () => {
               style={{
                 flex: 1,
                 flexWrap: "wrap",
+                fontSize: 16,
                 color: props.selected == 0 ? "white" : colors.primary,
               }}
             >
-              fkwejfoiewjfiowejfiowejfiowjfiowjfiowefw
-              efweijfoiwejfioewjfiowjefjweifeiwofw
-              fwefhwuiefhiuwehfuwejfoiwejfiowejfiowejfiowjefi
+              Selina K, 21/3, Ragava Street, Silver tone, Kodaikanal - 655 789
             </Text>
           </View>
         );
@@ -48,7 +47,6 @@ const Addreess = () => {
               flexDirection: "row",
               marginLeft: 16,
               marginRight: 32,
-
               gap: 16,
               width: 240,
               height: 120,
@@ -63,12 +61,11 @@ const Addreess = () => {
               style={{
                 flex: 1,
                 flexWrap: "wrap",
+                fontSize: 16,
                 color: props.selected == 1 ? "white" : colors.primary,
               }}
             >
-              fkwejfoiewjfiowejfiowejfiowjfiowjfiowefw
-              efweijfoiwejfioewjfiowjefjweifeiwofw
-              fwefhwuiefhiuwehfuwejfoiwejfiowejfiowejfiowjefi
+              737 Cherry Hill Ave. Cantonment, FL 32533
             </Text>
           </View>
         );

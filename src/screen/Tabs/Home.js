@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import Appbar from "../../components/Appbar";
 import Products from "../../components/Products";
 import colors from "../../utils/colors";
+import * as Animatable from "react-native-animatable";
 
 const Home = ({ navigation }) => {
   const ProductsList = [
@@ -74,22 +75,24 @@ const Home = ({ navigation }) => {
         all your needs!
       </Text>
 
-      <View
-        style={{
-          paddingHorizontal: 32,
-        }}
-      >
-        <Text
+      <Animatable.View animation={"bounceIn"} duration={1200}>
+        <View
           style={{
-            fontFamily: "quicksand m",
-            fontSize: 16,
-            paddingRight: 100,
+            paddingHorizontal: 32,
           }}
         >
-          Popular Products
-        </Text>
-        <Products navigation={navigation} products={ProductsList} />
-      </View>
+          <Text
+            style={{
+              fontFamily: "quicksand m",
+              fontSize: 16,
+              paddingRight: 100,
+            }}
+          >
+            Popular Products
+          </Text>
+          <Products navigation={navigation} products={ProductsList} />
+        </View>
+      </Animatable.View>
     </ScrollView>
   );
 };
