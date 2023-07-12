@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "shop-app",
-    "slug": "shop-app",
+    "slug": "shop",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ayhamgm81.shop"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9ab33718-a32c-40ab-99fb-d7d02d477651"
+      }
+    },
+    "owner": "ayhamgm81"
   }
 }
