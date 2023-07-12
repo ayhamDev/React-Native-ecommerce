@@ -5,6 +5,7 @@ import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import colors from "../../utils/colors";
 import { useNavigation } from "@react-navigation/native";
 import Button from "../../components/Button";
+import { SheetManager } from "react-native-actions-sheet";
 
 const ProductDetails = () => {
   const [selectedImage, SetSelectedImage] = useState(
@@ -200,93 +201,103 @@ const ProductDetails = () => {
               fontSize: 20,
               flex: 1,
               flexWrap: "wrap",
-              textAlign: "right",
+              textAlign: "left",
             }}
           >
             $43.00
           </Text>
-          <View style={{ marginTop: 30 }}>
-            <Text
-              style={{
-                fontFamily: "quicksand m",
-                fontSize: 16,
-                flex: 1,
-                flexWrap: "wrap",
-              }}
-            >
-              Color
-            </Text>
-            <View
-              style={{
-                marginTop: 10,
-                flexDirection: "row",
-                height: 55,
-                gap: 10,
-              }}
-            >
-              {color.map((color, index) => {
-                return (
-                  <TouchableOpacity
-                    onPress={() => SetSelectetColor(index)}
-                    key={index}
-                    style={{
-                      width: selectedColor == index ? 35 : 30,
-                      height: selectedColor == index ? 35 : 30,
-                      backgroundColor: color,
-                      borderRadius: 100,
-                    }}
-                  />
-                );
-              })}
-            </View>
-          </View>
-          <View>
-            <Text
-              style={{
-                fontFamily: "quicksand m",
-                fontSize: 16,
-                flex: 1,
-                flexWrap: "wrap",
-              }}
-            >
-              Size
-            </Text>
-            <View
-              style={{
-                marginTop: 10,
-                flexDirection: "row",
-                gap: 10,
-                height: 50,
-              }}
-            >
-              {sizes.map((size, index) => {
-                return (
-                  <TouchableOpacity
-                    onPress={() => SetSelectedSize(index)}
-                    style={{
-                      width: 35,
-                      height: 35,
-                      borderRadius: 100,
-                      justifyContent: "center",
-                      alignItems: "center",
-                      backgroundColor:
-                        selectedSize == index ? colors.primary : colors.white,
-                    }}
-                    key={index}
-                  >
-                    <Text
+          <View
+            style={{
+              marginTop: 25,
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontFamily: "quicksand m",
+                  fontSize: 16,
+                  flex: 1,
+                  flexWrap: "wrap",
+                }}
+              >
+                Color
+              </Text>
+              <View
+                style={{
+                  marginTop: 10,
+                  flexDirection: "row",
+                  height: 55,
+                  gap: 10,
+                }}
+              >
+                {color.map((color, index) => {
+                  return (
+                    <TouchableOpacity
+                      onPress={() => SetSelectetColor(index)}
+                      key={index}
                       style={{
-                        textAlign: "center",
-                        fontFamily: "quicksand",
-                        color:
-                          selectedSize == index ? colors.white : colors.primary,
+                        width: selectedColor == index ? 35 : 30,
+                        height: selectedColor == index ? 35 : 30,
+                        backgroundColor: color,
+                        borderRadius: 100,
                       }}
+                    />
+                  );
+                })}
+              </View>
+            </View>
+            <View>
+              <Text
+                style={{
+                  fontFamily: "quicksand m",
+                  fontSize: 16,
+                  flex: 1,
+                  flexWrap: "wrap",
+                }}
+              >
+                Size
+              </Text>
+              <View
+                style={{
+                  marginTop: 10,
+                  flexDirection: "row",
+                  gap: 10,
+                  height: 50,
+                }}
+              >
+                {sizes.map((size, index) => {
+                  return (
+                    <TouchableOpacity
+                      onPress={() => SetSelectedSize(index)}
+                      style={{
+                        width: 35,
+                        height: 35,
+                        borderRadius: 100,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor:
+                          selectedSize == index ? colors.primary : colors.white,
+                      }}
+                      key={index}
                     >
-                      {size.name}
-                    </Text>
-                  </TouchableOpacity>
-                );
-              })}
+                      <Text
+                        style={{
+                          textAlign: "center",
+                          fontFamily: "quicksand",
+                          color:
+                            selectedSize == index
+                              ? colors.white
+                              : colors.primary,
+                        }}
+                      >
+                        {size.name}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
             </View>
           </View>
         </View>
@@ -359,7 +370,7 @@ const ProductDetails = () => {
             <Ionicons name={"remove"} size={24} />
           </TouchableOpacity>
         </View>
-        <Button>Add to Cart</Button>
+        <Button onPress={() => SheetManager.show("cart")}>Add to Cart</Button>
       </View>
     </View>
   );

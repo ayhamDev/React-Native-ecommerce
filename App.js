@@ -9,6 +9,9 @@ import { StatusBar } from "expo-status-bar";
 import TabsNavigator from "./src/Navigator/TabsNavigator";
 import ProductDetails from "./src/screen/Stack/ProductDetails";
 
+import { SheetProvider, SheetManager } from "react-native-actions-sheet";
+import "./src/screen/Stack/Cart.js";
+
 SplashScreen.hideAsync();
 
 const Stack = createNativeStackNavigator();
@@ -22,18 +25,23 @@ export default function App() {
     SplashScreen.hideAsync();
   }
   if (!fontsLoaded) return null;
+  setTimeout(() => {
+    SheetManager.show("cart");
+  });
   return (
-    <NavigationContainer>
-      <StatusBar backgroundColor="white" />
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-          animation: "slide_from_right",
-        }}
-      >
-        <Stack.Screen name="tabs" component={TabsNavigator} />
-        <Stack.Screen name="product" component={ProductDetails} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SheetProvider>
+      <NavigationContainer>
+        <StatusBar backgroundColor="white" />
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+            animation: "slide_from_right",
+          }}
+        >
+          <Stack.Screen name="tabs" component={TabsNavigator} />
+          <Stack.Screen name="product" component={ProductDetails} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SheetProvider>
   );
 }

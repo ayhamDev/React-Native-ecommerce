@@ -18,19 +18,17 @@ const TabsNavigator = () => {
         return (
           <View style={{ position: "relative" }}>
             <View
-              style={
-                {
-                  // position: "absolute",
-                  // width: "320%",
-                  // height: 750,
-                  // top: -30,
-                  // borderTopStartRadius: 620,
-                  // borderTopEndRadius: 620,
-                  // left: "-110%",
-                  // backgroundColor: "white",
-                  // elevation: 24,
-                }
-              }
+              style={{
+                position: "absolute",
+                width: "400%",
+                height: 775,
+                top: -25,
+                borderTopStartRadius: 1000,
+                borderTopEndRadius: 1000,
+                left: "-150%",
+                backgroundColor: "white",
+                elevation: 24,
+              }}
             ></View>
             <BottomTabBar {...props}></BottomTabBar>
           </View>

@@ -69,7 +69,7 @@ const Profile = () => {
             backgroundColor: colors.white,
             margin: 16,
           }}
-        ></View>
+        />
         <TouchableOpacity
           style={{
             flexDirection: "row",
@@ -309,6 +309,7 @@ const Profile = () => {
             justifyContent: "space-between",
             alignItems: "center",
             paddingVertical: 15,
+            marginBottom: 75,
           }}
         >
           <View
