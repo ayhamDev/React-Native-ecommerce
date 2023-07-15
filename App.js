@@ -1,6 +1,9 @@
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 
@@ -13,7 +16,7 @@ import Onboarding from "./src/screen/Stack/Onboarding";
 
 SplashScreen.hideAsync();
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 export default function App() {
   const [fontsLoaded] = useFonts({
     quicksand: require("./assets/fonts/Quicksand-Regular.ttf"),
@@ -31,12 +34,42 @@ export default function App() {
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
-            animation: "fade_from_bottom",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            transitionSpec: {
+              open: {
+                animation: "spring",
+                config: {
+                  stiffness: 1000,
+                  damping: 500,
+                  mass: 5,
+                  overshootClamping: true,
+                  restDisplacementThreshold: 0.001,
+                  restSpeedThreshold: 0.01,
+                },
+              },
+              close: {
+                animation: "spring",
+                config: {
+                  stiffness: 1500,
+                  damping: 500,
+                  mass: 5,
+                  overshootClamping: true,
+                  restDisplacementThreshold: 0.001,
+                  restSpeedThreshold: 10,
+                },
+              },
+            },
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           }}
         >
           <Stack.Screen name="onboarding" component={Onboarding} />
           <Stack.Screen name="tabs" component={TabsNavigator} />
-          <Stack.Screen name="product" component={ProductDetails} />
+          <Stack.Screen
+            name="product"
+            component={ProductDetails}
+            screenOptions={{}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SheetProvider>

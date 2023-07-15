@@ -115,7 +115,7 @@ const Onboarding = ({ navigation }) => {
             <View style={{ height: 50 }}>
               <TouchableOpacity
                 style={styles.btn}
-                onPress={() => navigation.navigate("tabs")}
+                onPress={() => navigation.replace("tabs")}
               >
                 <Text style={{ fontWeight: "bold", fontSize: 15 }}>
                   GET STARTED
